@@ -16,7 +16,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "npm run build && electron ./dist-js/main/main.js"
   },
   "devDependencies": {
     "electron": "^4.2.4",

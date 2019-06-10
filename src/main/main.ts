@@ -1,27 +1,38 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
 
-let mainWindow: Electron.BrowserWindow;
+// let windows: [Electron.BrowserWindow]
+// let mainWindow: Electron.BrowserWindow | null;
+let mainWindow: BrowserWindow;
 
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: 1000,
+    width: 2000,
+    title: "my window title",
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  mainWindow.loadFile(path.join(__dirname, "../../index.html"));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  mainWindow.webContents.on("did-finish-load", () => {
+    mainWindow.webContents.send("ping", "ping message!");
+    mainWindow.webContents.send("share-main-window", mainWindow);
+  });
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null;
+    // mainWindow = null;
   });
 }
 
@@ -49,3 +60,7 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+ipcMain.on("pong", (_: Event, msg: string) => {
+  // tslint:disable-next-line: no-console
+  console.log(msg);
+});
