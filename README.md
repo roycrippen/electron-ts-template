@@ -2,16 +2,18 @@
 
 A basic [Electron](https://electronjs.org) TypeScript template.
 
-### Run
+### Quick Start
 
 ```
-$ npm install && npm start
-```
+# clone the repository
+git clone https://github.com/roycrippen/electron-ts-template.git
 
-### Publish
+# install dependencies
+$ npm install
 
-```
-$ npm run release
-```
+# start application in development mode
+$ npm run start 
 
-Then edit the automatically created GitHub Releases draft and publish.
+# build distribution release
+$ npm run dist
+```
