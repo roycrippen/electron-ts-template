@@ -7,17 +7,17 @@ import { ipcRenderer } from "electron";
 ipcRenderer.on("ping", (_: Event, msg: string) => {
   // tslint:disable-next-line: no-console
   console.log(msg);
-  ipcRenderer.send("pong", "pong message!");
+  ipcRenderer.send("pong", "pong message! aaa");
 });
 
 const interpret = (event: any) => {
-  if (event.key === " ") {                            // Space
+  if (event.key === " ") {
     // tslint:disable-next-line: no-console
     console.log("key code , Space");
-  } else if (event.key === "Enter" && !event.shiftKey) {  // 13 = Enter
+  } else if (event.key === "Enter" && !event.shiftKey) {
     // tslint:disable-next-line: no-console
     console.log("key code 13, Enter");
-  } else if (event.key === ";" && !event.shiftKey) { // 186 = ';'
+  } else if (event.key === ";" && !event.shiftKey) {
     // tslint:disable-next-line: no-console
     console.log("key code 186, ';'");
   }

@@ -23,8 +23,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools();
 
   mainWindow.webContents.on("did-finish-load", () => {
-    mainWindow.webContents.send("ping", "ping message!");
-    mainWindow.webContents.send("share-main-window", mainWindow);
+    mainWindow.webContents.send("ping", "ping message! aaa");
   });
 
   // Emitted when the window is closed.
