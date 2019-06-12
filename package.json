@@ -12,17 +12,23 @@
     "typescript"
   ],
   "license": "BSD-3-Clause",
+  "main": "dist-js/main-bundle.js",
   "scripts": {
-    "build": "tsc --pretty",
-    "watch": "tsc -w",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist-js/main/main.js",
-    "debug": "npm run build && electron --inspect ./dist-js/main/main.js",
-    "dist": "tsc"
+    "start": "npm-run-all build run-electron",
+    "build": "webpack --config webpack.config.js",
+    "run-electron": "electron .",
+    "build:old": "tsc --pretty",
+    "watch:old": "tsc -w",
+    "start:old": "npm run build && electron ./dist-js/main/main.js",
+    "debug:old": "npm run build && electron --inspect ./dist-js/main/main.js"
   },
   "devDependencies": {
     "electron": "^4.2.4",
-    "tslint": "^5.17.0",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.1",
+    "webpack": "^4.33.0",
+    "@types/node": "^12.0.8",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^6.0.2",
+    "webpack-cli": "^3.3.4"
   }
 }

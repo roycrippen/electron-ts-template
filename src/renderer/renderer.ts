@@ -3,26 +3,22 @@
 // All of the Node.js APIs are available in this process.
 
 import { ipcRenderer } from "electron";
+import { double } from "./util";
 
 ipcRenderer.on("ping", (_: Event, msg: string) => {
-  // tslint:disable-next-line: no-console
   console.log(msg);
-  ipcRenderer.send("pong", "pong message! aaa");
+  ipcRenderer.send("pong", "pong message! " + double(100).toString());
 });
 
 const interpret = (event: any) => {
   if (event.key === " ") {
-    // tslint:disable-next-line: no-console
     console.log("key code , Space");
   } else if (event.key === "Enter" && !event.shiftKey) {
-    // tslint:disable-next-line: no-console
     console.log("key code 13, Enter");
   } else if (event.key === ";" && !event.shiftKey) {
-    // tslint:disable-next-line: no-console
     console.log("key code 186, ';'");
   }
 };
 
-// tslint:disable-next-line: variable-name
 const _global = global as any;
 _global.repl = interpret;
