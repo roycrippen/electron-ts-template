@@ -16,4 +16,7 @@ $ npm install
 
 # start application in development mode
 $ npm start 
+
+# build distribution release
+$ npm run dist
 ```
