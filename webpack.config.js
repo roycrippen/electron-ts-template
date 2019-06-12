@@ -29,6 +29,7 @@ module.exports = [
     entry: {
       main: './src/main/main.ts',
     },
+    devtool: '#inline-source-map',
     output: {
       filename: '[name]-bundle.js',
       path: path.resolve(__dirname, 'dist-js')
@@ -39,6 +40,7 @@ module.exports = [
     entry: {
       ui: './src/renderer/renderer.ts',
     },
+    devtool: '#inline-source-map',
     output: {
       filename: '[name]-bundle.js',
       path: path.resolve(__dirname, 'dist-js')
