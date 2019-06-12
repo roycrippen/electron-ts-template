@@ -5,19 +5,19 @@
 import { ipcRenderer } from "electron";
 import { double } from "./util";
 
-ipcRenderer.on("ping", (_: Event, msg: string) => {
-  console.log(msg);
-  ipcRenderer.send("pong", "pong message! " + double(100).toString());
+ipcRenderer.on("ping", (_: Event, msg: string): void => {
+    console.log(msg);
+    ipcRenderer.send("pong", "pong message! " + double(100).toString());
 });
 
-const interpret = (event: any) => {
-  if (event.key === " ") {
-    console.log("key code , Space");
-  } else if (event.key === "Enter" && !event.shiftKey) {
-    console.log("key code 13, Enter");
-  } else if (event.key === ";" && !event.shiftKey) {
-    console.log("key code 186, ';'");
-  }
+const interpret = (event: any): void => {
+    if (event.key === " ") {
+        console.log("key code , Space");
+    } else if (event.key === "Enter" && !event.shiftKey) {
+        console.log("key code 13, Enter");
+    } else if (event.key === ";" && !event.shiftKey) {
+        console.log("key code 186, ';'");
+    }
 };
 
 const _global = global as any;
